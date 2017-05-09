@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 /**
- * 数据库连接池
+ * 数据库连接池-配置
  * @author xiams
  * @version 1.0
  * @date 2017-05-08 10:59:38
