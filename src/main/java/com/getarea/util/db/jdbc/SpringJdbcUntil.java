@@ -410,9 +410,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 					try {
 						batch.setParams(getJdbcTemplate(), status);
 						batch.execute();
-					}
-					catch (final Exception e)
-					{
+					} catch (final Exception e) {
 						batch.rollBack();
 						batch.getError(e);
 						e.printStackTrace();

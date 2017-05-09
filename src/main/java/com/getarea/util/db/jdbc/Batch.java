@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.TransactionStatus;
 
 /**
  * @author xiams
@@ -16,13 +16,36 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public abstract class Batch extends BatchBase {
 	private static Logger     logger            = Logger.getLogger(Batch.class);
 	
-	@Autowired
-	private JdbcTemplate jdbcTemplate ;
+	private JdbcTemplate      jdbcTemplate;
+	private TransactionStatus transactionStatus;
 	
 	public final static int   DEFAULT_FETCHSIZE = 32; //默认的fetchsize
 	
 	public JdbcTemplate getJdbcTemplate () {
 		return jdbcTemplate;
+	}
+	
+	public void setJdbcTemplate (JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public TransactionStatus getTransactionStatus () {
+		return transactionStatus;
+	}
+	
+	public void setTransactionStatus (TransactionStatus transactionStatus) {
+		this.transactionStatus = transactionStatus;
+	}
+	
+	@Override
+	public void setParams (JdbcTemplate jdbc, TransactionStatus status) {
+		this.setJdbcTemplate(jdbc);
+		this.setTransactionStatus(status);
+	}
+	
+	@Override
+	public void rollBack () {
+		this.getTransactionStatus().setRollbackOnly();
 	}
 	
 	/**
