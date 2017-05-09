@@ -80,11 +80,9 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		Map<String, Object> map = null;
 		try {
 			map = this.getJdbcTemplate().queryForMap(sql, objects);
-		}
-		catch (EmptyResultDataAccessException e) {
+		} catch (EmptyResultDataAccessException e) {
 			
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 		
 		}
 		if (map == null) map = new HashMap<String, Object>();
@@ -95,11 +93,9 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		Map<String, Object> map = null;
 		try {
 			map = this.getJdbcTemplate().queryForMap(sql);
-		}
-		catch (EmptyResultDataAccessException e) {
+		} catch (EmptyResultDataAccessException e) {
 			
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			
 		}
 		
@@ -116,8 +112,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 	public String queryForString (String sql, Object[] args) {
 		try {
 			return this.getJdbcTemplate().queryForObject(sql, args, String.class);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return "";
 		}
 	}
@@ -125,8 +120,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 	public String queryForString (String sql) {
 		try {
 			return this.getJdbcTemplate().queryForObject(sql, null, String.class);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.error(sql);
 			return "";
 		}
@@ -135,8 +129,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 	public String queryForString (String sql, List<String> list) {
 		try {
 			return this.getJdbcTemplate().queryForObject(sql, list.toArray(), String.class);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.error(sql);
 			return "";
 		}
@@ -163,8 +156,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 				
 				map.clear();
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			
 		}
 		return temp;
@@ -212,8 +204,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		List<Map<String, Object>> list = null;
 		try {
 			list = jdbc.queryForList(sql);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			logger.error(sql);
 		}
 		if (list == null) list = new ArrayList<Map<String, Object>>();
@@ -234,8 +225,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		List<Map<String, Object>> list = null;
 		try {
 			list = jdbc.queryForList(sql, objects);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			logger.error(sql);
 		}
 		if (list == null) list = new ArrayList<Map<String, Object>>();
@@ -263,8 +253,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		int exc = 1;
 		try {
 			this.getJdbcTemplate().update(sql, objects);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			exc = 0;
 		}
 		return exc;
@@ -274,8 +263,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		int exc = 1;
 		try {
 			this.getJdbcTemplate().update(sql);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			exc = 0;
 			logger.error(sql);
 		}
@@ -324,7 +312,6 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 	 * @return
 	 */
 	public String getEasyCntSql (String sql) {
-		
 		String find = "(O|o)(R|r)(D|d)(E|e)(R|r)\\s+(B|b)(Y|y)";
 		String tmp = "XXXXXX";
 		String sql1 = sql.replaceAll(find, tmp);
@@ -354,9 +341,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 		try {
 			proc = new ProcHelper(this.getDataSource(), sql);
 			proc.setSql(sql);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error(e.toString());
 		}
 		return proc;
@@ -376,8 +361,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 			String orderSql = oldSql.substring(sql.lastIndexOf(" order "));
 			if (orderSql.contains(")")) {
 				newSql = oldSql;
-			}
-			else {
+			} else {
 				newSql = oldSql.substring(0, sql.lastIndexOf(" order "));
 			}
 		} else {
@@ -419,8 +403,7 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 					return 1;
 				}
 			});
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			exc = 0;
 			batch.rollBack();
 			batch.getError(e);
@@ -453,15 +436,14 @@ public class SpringJdbcUntil extends JdbcDaoSupport{
 						if (sql_type != null && sql_type.equals("clob")) {
 							int[] colIndex = (int[]) sqlMap.get("clob_index");
 							logger.info("updateClob(sql, objects, colIndex)" + colIndex);
-						}
-						else {
+						} else {
 							getJdbcTemplate().update(sql, objects);
 						}
 					}
 				}
 			});
-		}
-		catch (Exception e) {
+			
+		} catch (Exception e) {
 			exc = 0;
 		}
 		return exc;

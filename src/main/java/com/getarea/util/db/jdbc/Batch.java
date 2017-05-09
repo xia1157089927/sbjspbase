@@ -73,8 +73,7 @@ public abstract class Batch extends BatchBase {
 	public String getError (Exception e) {
 		StringBuffer str = new StringBuffer();
 		str.append(e.getMessage());
-		for (int i = 0; i < e.getStackTrace().length; i++)
-		{
+		for (int i = 0; i < e.getStackTrace().length; i++) {
 			str.append(e.getStackTrace()[i] + "\n");
 		}
 		return str.toString();
@@ -91,8 +90,7 @@ public abstract class Batch extends BatchBase {
 		Map<String, Object> map = null;
 		try {
 			map = this.getJdbcTemplate().queryForMap(sql, objects);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			getError(e, sql, objects);
 		}
 		if (map == null) map = new HashMap<String, Object>();
@@ -120,8 +118,7 @@ public abstract class Batch extends BatchBase {
 	public String queryForString (String sql, Object[] objects) throws Exception {
 		try {
 			return this.getJdbcTemplate().queryForObject(sql, objects, String.class);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			getError(e, sql, objects);
 			return "";
 		}
@@ -151,8 +148,7 @@ public abstract class Batch extends BatchBase {
 		List<Map<String, Object>> list = null;
 		try {
 			list = jdbc.queryForList(sql, objects);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			getError(e, sql, objects);
 		}
 		if (list == null) list = new ArrayList<Map<String, Object>>();
@@ -219,8 +215,7 @@ public abstract class Batch extends BatchBase {
 		int exc = 1;
 		try {
 			this.getJdbcTemplate().update(sql, objects);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			exc = 0;
 			getError(e, sql, objects);
 		}
