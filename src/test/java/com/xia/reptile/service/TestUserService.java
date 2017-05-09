@@ -28,7 +28,7 @@ public class TestUserService {
 	
 	private static Logger logger = LoggerFactory.getLogger(SpringJdbcUntil.class);
 	
-	@Autowired @Qualifier("areaDbUtil")
+	@Autowired @Qualifier("springJdbcUtil_Getarea")
 	private SpringJdbcUntil getareaDbUtil;  
 	
 	/*@Autowired

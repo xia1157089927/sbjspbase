@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -35,7 +36,8 @@ public class DiagnosisDBConfig {
     	return new TransactionTemplate(dataSourceTransactionManagerGetarea());
     }
     
-    @Bean(name="areaDbUtil")
+    @Primary
+    @Bean(name="springJdbcUtil_Getarea")
     public SpringJdbcUntil springJdbcUtilGetarea(){
     	return new SpringJdbcUntil(getareaDataSource, transactionTemplateGetarea());
     }
