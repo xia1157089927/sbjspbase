@@ -16,7 +16,11 @@ spring:
         max-idle: 50
   jackson: 
     date-format: yyyy-MM-dd HH:mm:ss Z
-    time-zone: GMT+8      
+    time-zone: GMT+8  
+  mvc: 
+    view: 
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
     
 # EMBEDDED SERVER CONFIGURATION (ServerProperties)
 server: # 内置tomcat配置
