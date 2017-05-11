@@ -78,7 +78,7 @@ public class Pagination extends JdbcDaoSupport{
 	    setNumPerPage(numPerPage);
 	    // 设置要显示的页数
 		setCurrentPage(currentPage);
-		System.out.println("Pagination currentPage="+currentPage);
+		LOG.info("Pagination currentPage="+currentPage);
 		// 计算总记录数
 		StringBuffer totalSQL = new StringBuffer(" SELECT count(*) FROM ( ");
 		totalSQL.append(sql);
@@ -93,14 +93,20 @@ public class Pagination extends JdbcDaoSupport{
 		setStartIndex();
 		// 计算结束行数
 		setLastIndex();
-		System.out.println("lastIndex=" + lastIndex);// ////////////////
+		LOG.info("lastIndex=" + lastIndex);// ////////////////
 		// 构造oracle数据库的分页语句
-		StringBuffer paginationSQL = new StringBuffer(" SELECT * FROM ( ");
-		paginationSQL.append(" SELECT temp.* ,ROWNUM num FROM ( ");
-		paginationSQL.append(sql);
-		paginationSQL.append("　) temp where ROWNUM <= " + lastIndex);
-		paginationSQL.append(" ) WHERE　num > " + startIndex);
-		System.out.println("sql:"+paginationSQL.toString());
+		StringBuffer paginationSQL = null;
+		
+		if(dbType.equals("oracle")){
+			paginationSQL = new StringBuffer(" SELECT * FROM ( ");
+			paginationSQL.append(" SELECT temp.* ,ROWNUM num FROM ( ");
+			paginationSQL.append(sql);
+			paginationSQL.append("　) temp where ROWNUM <= " + lastIndex);
+			paginationSQL.append(" ) WHERE　num > " + startIndex);
+			LOG.info("sql:"+paginationSQL.toString());
+		} else {
+			
+		}
 		// 装入结果集
 		setResultList(getJdbcTemplate().query(paginationSQL.toString(),rowMapper));
 	}
@@ -178,15 +184,15 @@ public class Pagination extends JdbcDaoSupport{
 	// 计算结束时候的索引
 
 	public void setLastIndex() {
-	   System.out.println("totalRows=" + totalRows); 
-	   System.out.println("numPerPage=" + numPerPage); 
-	   if (totalRows < numPerPage) {
-		   this.lastIndex = totalRows;
-	   } else if ((totalRows % numPerPage == 0) || (totalRows % numPerPage != 0 && currentPage < totalPages)) {
-		   this.lastIndex = currentPage * numPerPage;
-	   } else if (totalRows % numPerPage != 0 && currentPage == totalPages) {//最后一页
-		   this.lastIndex = totalRows;
-	   }
+		LOG.info("totalRows=" + totalRows); 
+		LOG.info("numPerPage=" + numPerPage); 
+		if (totalRows < numPerPage) {
+			this.lastIndex = totalRows;
+		} else if ((totalRows % numPerPage == 0) || (totalRows % numPerPage != 0 && currentPage < totalPages)) {
+			this.lastIndex = currentPage * numPerPage;
+		} else if (totalRows % numPerPage != 0 && currentPage == totalPages) {//最后一页
+			this.lastIndex = totalRows;
+		}
 	}
 
 	public List<Object> getResultList() {
