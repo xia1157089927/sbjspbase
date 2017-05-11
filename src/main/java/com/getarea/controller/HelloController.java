@@ -19,4 +19,10 @@ public class HelloController {
 	    map.put("hello", hello);
 	    return"helloJsp";
 	}
+	
+	@RequestMapping("/bootstrap")
+	public String bootstrap(Map<String,Object> map){
+		return "bootstrap";
+	}
+	
 }
