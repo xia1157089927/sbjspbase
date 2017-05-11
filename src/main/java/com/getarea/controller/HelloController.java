@@ -13,6 +13,15 @@ public class HelloController {
 	@Value("${spring.application.name:Hello Angel}")
     private String hello;
 	
+	/**
+	 * 跳转到首页
+	 * @return
+	 */
+	@RequestMapping("/")
+	public String index(){
+		return"index";
+	}
+	
 	@RequestMapping("/helloJsp")
 	public String helloJsp(Map<String,Object> map){
 	    System.out.println("HelloController.helloJsp().hello=" + hello);
