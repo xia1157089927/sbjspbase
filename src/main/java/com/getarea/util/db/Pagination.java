@@ -188,7 +188,6 @@ public class Pagination extends JdbcDaoSupport{
 	}
 
 	// 计算结束时候的索引
-
 	public void setLastIndex() {
 		LOG.info("totalRows=" + totalRows); 
 		LOG.info("numPerPage=" + numPerPage); 
