@@ -103,15 +103,15 @@ public class Pagination extends JdbcDaoSupport{
 			paginationSQL.append(sql);
 			paginationSQL.append("　) temp where ROWNUM <= " + lastIndex);
 			paginationSQL.append(" ) WHERE　num > " + startIndex);
-			LOG.info("sql:"+paginationSQL.toString());
+			LOG.info("oracle_sql:"+paginationSQL.toString());
 		} else {
 			paginationSQL = new StringBuffer(" SELECT * FROM ( ");
 			paginationSQL.append(sql);
-			paginationSQL.append(" ) tmp_table limit ");
+			paginationSQL.append(" ) tmp_Pagination_table limit ");
 			paginationSQL.append(startIndex);
 			paginationSQL.append(" , ");
 			paginationSQL.append(numPerPage);
-			LOG.info("sql:"+paginationSQL.toString());
+			LOG.info("mysql_sql:"+paginationSQL.toString());
 		}
 		// 装入结果集
 		setResultList(getJdbcTemplate().query(paginationSQL.toString(),rowMapper));
