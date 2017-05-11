@@ -10,11 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="amaze/assets/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="amaze/assets/i/app-icon72x72@2x.png">
+  <link rel="icon" type="image/png" href="amaze_ui/assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="amaze_ui/assets/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="amaze/assets/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="amaze/assets/css/admin.css">
+  <link rel="stylesheet" href="amaze_ui/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="amaze_ui/assets/css/admin.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -443,7 +443,7 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script type="text/javascript" src="webjars/jquery/1.11.3/jquery.js"></script>
 <!--<![endif]-->
-<script src="amaze/assets/js/amazeui.min.js"></script>
-<script src="amaze/assets/js/app.js"></script>
+<script src="amaze_ui/assets/js/amazeui.min.js"></script>
+<script src="amaze_ui/assets/js/app.js"></script>
 </body>
 </html>
