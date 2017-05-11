@@ -21,6 +21,7 @@ spring:
     view: 
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+      static-path-pattern: /static/**
     
 # EMBEDDED SERVER CONFIGURATION (ServerProperties)
 server: # 内置tomcat配置
