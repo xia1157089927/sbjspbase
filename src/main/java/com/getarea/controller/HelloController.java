@@ -20,9 +20,24 @@ public class HelloController {
 	    return"helloJsp";
 	}
 	
+	/**
+	 * 跳转到bootstrap页面
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/bootstrap")
 	public String bootstrap(Map<String,Object> map){
 		return "bootstrap";
+	}
+	
+	/**
+	 * 跳转到amazingUi主页
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping("/adminTable")
+	public String adminTable(Map<String,Object> map){
+		return "admin-table";
 	}
 	
 }
