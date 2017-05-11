@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.TransactionStatus;
 
@@ -14,7 +15,7 @@ import org.springframework.transaction.TransactionStatus;
  * @date 2015-03-05
  */
 public abstract class Batch extends BatchBase {
-	private static Logger     logger            = Logger.getLogger(Batch.class);
+	private static Logger logger = LoggerFactory.getLogger(Batch.class);
 	
 	private JdbcTemplate      jdbcTemplate;
 	private TransactionStatus transactionStatus;

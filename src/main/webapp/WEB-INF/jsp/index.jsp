@@ -29,19 +29,19 @@
 		
 		  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 		
-		    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-		      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-		      <li class="am-dropdown" data-am-dropdown>
-		        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-		          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
-		        </a>
-		        <ul class="am-dropdown-content">
-		          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-		          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-		          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-		        </ul>
-		      </li>
-		      <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+	      	<ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+	      		<li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
+		      	<li class="am-dropdown" data-am-dropdown>
+		        	<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+		          		<span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+		        	</a>
+		        	<ul class="am-dropdown-content">
+		          		<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+		          		<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+		          		<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+		        	</ul>
+	      		</li>
+		      	<li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
 		    </ul>
 		  </div>
 		</header>
@@ -126,18 +126,45 @@
 			              			</tr>
 			              		</thead>
 			              		<tbody>
-			              			<c:forEach begin="1" end="100" step="1" var="stepIndex">
+			              			<c:forEach begin="1" end="15" step="1" var="stepIndex">
 			              				<tr>
-	                						<th class="table-check"><input type="checkbox" /></th>
-	                						<th class="table-id">ID</th><th class="table-title">标题_${stepIndex}</th>
-	                						<th class="table-type">类别_${stepIndex}</th>
-	                						<th class="table-author am-hide-sm-only">作者_${stepIndex}</th>
-	                						<th class="table-date am-hide-sm-only">修改日期_${stepIndex}</th>
-	                						<th class="table-set">操作_${stepIndex}</th>
-				              			</tr>
+                							<td><input type="checkbox" /></td>
+               	 							<td>${stepIndex}</td>
+                							<td><a href="#">Business management</a></td>
+               						 		<td>default</td>
+                							<td class="am-hide-sm-only">测试1号</td>
+                							<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+                							<td>
+                  								<div class="am-btn-toolbar">
+	                    							<div class="am-btn-group am-btn-group-xs">
+		                      							<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+		                      							<button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
+		                      							<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+	                    							</div>
+                  								</div>
+                							</td>
+              							</tr>
 			              			</c:forEach>
 			              		</tbody>
           					</table>
+          					
+          					<div class="am-cf">
+             					 共 15 条记录
+            					<div class="am-fr">
+                					<ul class="am-pagination">
+                  						<li class="am-disabled"><a href="#">«</a></li>
+					                    <li class="am-active"><a href="#">1</a></li>
+						                <li><a href="#">2</a></li>
+						                <li><a href="#">3</a></li>
+						                <li><a href="#">4</a></li>
+						                <li><a href="#">5</a></li>
+						                <li><a href="#">»</a></li>
+                					</ul>
+              					</div>
+            				</div>
+            				<hr />
+            				<p>注：.....</p>
+            				
           				</form>
         			</div>
        			</div>

@@ -31,6 +31,8 @@ server: # 内置tomcat配置
   tomcat: 
     max-threads: 800 # tomcat最大线程数，默认为200
     uri-encoding: UTF-8 # tomcat的URI编码
-    
 
+# 自定义系统变量   
+App: 
+  dbType: mysql
 
