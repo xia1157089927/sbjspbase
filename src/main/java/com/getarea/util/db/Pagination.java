@@ -80,7 +80,7 @@ public class Pagination extends JdbcDaoSupport{
 		setCurrentPage(currentPage);
 		LOG.info("Pagination currentPage="+currentPage);
 		// 计算总记录数
-		StringBuffer totalSQL = new StringBuffer(" SELECT count(*) FROM ( ");
+		StringBuffer totalSQL = new StringBuffer(" SELECT count(1) FROM ( ");
 		totalSQL.append(sql);
 		totalSQL.append(" ) totalTable ");
 		// 给JdbcTemplate赋值
@@ -105,7 +105,13 @@ public class Pagination extends JdbcDaoSupport{
 			paginationSQL.append(" ) WHERE　num > " + startIndex);
 			LOG.info("sql:"+paginationSQL.toString());
 		} else {
-			
+			paginationSQL = new StringBuffer(" SELECT * FROM ( ");
+			paginationSQL.append(sql);
+			paginationSQL.append(" ) tmp_table limit ");
+			paginationSQL.append(startIndex);
+			paginationSQL.append(" , ");
+			paginationSQL.append(numPerPage);
+			LOG.info("sql:"+paginationSQL.toString());
 		}
 		// 装入结果集
 		setResultList(getJdbcTemplate().query(paginationSQL.toString(),rowMapper));
