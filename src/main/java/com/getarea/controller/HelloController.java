@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.swagger.annotations.Api;
+
 @Controller
+@Api(tags="首页！！！！！！！！！")
 public class HelloController {
 	
     // 从 application.properties 中读取配置，如取不到默认值为HelloShanhy
